@@ -71,6 +71,7 @@ module.exports = function (grunt) {
 					strictImports: true,
 					strictMath: true,
 					strictUnits: true,
+					cleancss: true,
 				},
 			},
 		},
