@@ -1,4 +1,4 @@
-angularjs-typescript-template
+angular-ts-seed
 ========================================
 
 This is a starting point for building [AngularJS](https://angularjs.org/)
