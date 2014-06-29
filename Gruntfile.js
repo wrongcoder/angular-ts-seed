@@ -19,6 +19,8 @@ module.exports = function (grunt) {
 		ts: {
 			options: {
 				removeComments: false,
+				htmlModuleTemplate: "<%= filename %>",
+				htmlVarTemplate: "<%= ext %>",
 			},
 			dev: {
 				baseDir: "app",
