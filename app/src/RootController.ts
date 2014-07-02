@@ -2,7 +2,7 @@
 
 module Application {
 
-	export class RootViewController {
+	export class RootController {
 		view: string = "helloWorld";
 	}
 
