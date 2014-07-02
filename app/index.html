@@ -19,8 +19,15 @@
 	<!--<!(endif)-->
 </head>
 <body>
-	<div data-ng-controller="RootController as root" data-ng-include="'view/' + root.view + '.html'" data-ng-cloak="cloak">
-		JavaScript must be enabled to use this application.
+	<div data-ng-controller="RootController as root" data-ng-cloak="cloak">
+		<div data-ng-include="'view/' + root.view + '.html'">
+			JavaScript must be enabled to use this application.
+		</div>
+		<!--(if target dev)><!-->
+		<div>
+			<button data-ng-click="root.reloadTemplates()">Reload</button>
+		</div>
+		<!--<!(endif)-->
 	</div>
 </body>
 </html>
