@@ -25,6 +25,6 @@ module Application {
 		}
 	}
 
-	app.controller("HelloWorldController", HelloWorldController);
+	app.controller("HelloWorldCtrl", HelloWorldController);
 
 }

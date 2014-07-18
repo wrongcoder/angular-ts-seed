@@ -24,6 +24,6 @@ module Application {
 		}
 	}
 
-	app.controller("RootController", RootController);
+	app.controller("RootCtrl", RootController);
 
 }
