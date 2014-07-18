@@ -24,4 +24,6 @@ module Application {
 		}
 	}
 
+	app.controller("RootController", RootController);
+
 }

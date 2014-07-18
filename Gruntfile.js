@@ -44,11 +44,12 @@ module.exports = function (grunt) {
 			},
 		},
 		ngtemplates: {
-			Application: {
+			prod: {
 				cwd: "app",
 				src: [ "view/**.html" ],
 				dest: "target/views.js",
 				options: {
+					module: "APP",
 					htmlmin: {
 						collapseWhitespace: true,
 						collapseBooleanAttributes: true,

@@ -25,4 +25,6 @@ module Application {
 		}
 	}
 
+	app.controller("HelloWorldController", HelloWorldController);
+
 }

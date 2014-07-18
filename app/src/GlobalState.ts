@@ -6,4 +6,6 @@ module Application {
 		number: number = 3;
 	}
 
+	app.service("g", GlobalState);
+
 }
