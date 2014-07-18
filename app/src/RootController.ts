@@ -2,7 +2,7 @@
 
 module Application {
 
-	export class RootController {
+	class RootController {
 		private $templateCache: ng.ITemplateCacheService;
 		private $timeout: ng.ITimeoutService;
 

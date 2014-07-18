@@ -2,7 +2,7 @@
 
 module Application {
 
-	export class HelloWorldController {
+	class HelloWorldController {
 		g: GlobalState;
 
 		//noinspection JSUnusedGlobalSymbols
