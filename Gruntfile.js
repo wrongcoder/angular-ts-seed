@@ -51,8 +51,14 @@ module.exports = function (grunt) {
 				options: {
 					module: "APP",
 					htmlmin: {
-						collapseWhitespace: true,
 						collapseBooleanAttributes: true,
+						collapseWhitespace: true,
+						removeAttributeQuotes: true,
+						removeComments: true,
+						removeEmptyAttributes: true,
+						removeRedundantAttributes: true,
+						removeScriptTypeAttributes: true,
+						removeStyleLinkTypeAttributes: true,
 					},
 				},
 			},
