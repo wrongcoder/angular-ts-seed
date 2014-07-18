@@ -7,11 +7,12 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-contrib-copy");
 	grunt.loadNpmTasks("grunt-contrib-less");
 	grunt.loadNpmTasks("grunt-contrib-uglify");
+	grunt.loadNpmTasks("grunt-line-remover");
 	grunt.loadNpmTasks("grunt-targethtml");
 	grunt.loadNpmTasks("grunt-ts");
 
 	grunt.registerTask("dev", [ "connect:dev", "ts:dev" ]);
-	grunt.registerTask("dist", [ "clean", "ts:prod", "ngtemplates", "uglify:prod", "less:prod", "targethtml:prod", "copy:dist" ]);
+	grunt.registerTask("dist", [ "clean", "ts:prod", "ngtemplates", "uglify:prod", "less:prod", "targethtml:prod", "lineremover:prod", "copy:dist" ]);
 	grunt.registerTask("test", [ "dist", "connect:dist:keepalive" ]);
 	grunt.registerTask("default", [ "dev" ]);
 
@@ -116,6 +117,13 @@ module.exports = function (grunt) {
 			prod: {
 				files: {
 					"target/index.html": "app/index.html",
+				},
+			},
+		},
+		lineremover: {
+			prod: {
+				files: {
+					"target/index.html": "target/index.html",
 				},
 			},
 		},
