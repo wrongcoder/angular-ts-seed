@@ -68,6 +68,10 @@ module.exports = function (grunt) {
 				src: [ "target/code.js", "target/views.js" ],
 				dest: "target/application.js",
 			},
+			options: {
+				now: new Date(),
+				banner: "/* \u00A9 <%= uglify.options.now.getFullYear() %> example.com */",
+			},
 		},
 		less: {
 			prod: {
