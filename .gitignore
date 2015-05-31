@@ -9,3 +9,6 @@
 /.tscache
 /tscommand-*.tmp.txt
 /app/.baseDir.ts
+/app/**/*.js
+/app/**/*.js.map
+/.gradle
