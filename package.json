@@ -9,6 +9,6 @@
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-line-remover": "~0.0.2",
     "grunt-targethtml": "~0.2.6",
-    "grunt-ts": "~1.11.4"
+    "grunt-ts": "~4.1.0"
   }
 }
