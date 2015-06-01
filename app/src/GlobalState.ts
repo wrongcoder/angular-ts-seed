@@ -2,13 +2,14 @@
 
 module Application {
 
-	// As a service, this class is exported because its
-	// definition could be useful from outside of this file.
+	export interface GlobalState {
+		number: number;
+	}
 
-	export class GlobalState {
+	class GlobalStateImpl implements GlobalState {
 		number: number = 3;
 	}
 
-	app.service("g", GlobalState);
+	app.service("g", GlobalStateImpl);
 
 }
