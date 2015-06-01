@@ -10,9 +10,10 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-line-remover");
 	grunt.loadNpmTasks("grunt-targethtml");
 	grunt.loadNpmTasks("grunt-ts");
+	grunt.loadNpmTasks("grunt-tsd");
 
-	grunt.registerTask("dev", [ "connect:dev", "ts:dev" ]);
-	grunt.registerTask("dist", [ "clean", "ts:prod", "ngtemplates", "uglify:prod", "less:prod", "targethtml:prod", "lineremover:prod", "copy:dist" ]);
+	grunt.registerTask("dev", [ "connect:dev", "tsd", "ts:dev" ]);
+	grunt.registerTask("dist", [ "clean", "tsd", "ts:prod", "ngtemplates", "uglify:prod", "less:prod", "targethtml:prod", "lineremover:prod", "copy:dist" ]);
 	grunt.registerTask("test", [ "dist", "connect:dist:keepalive" ]);
 	grunt.registerTask("default", [ "dev" ]);
 
@@ -41,6 +42,14 @@ module.exports = function (grunt) {
 				out: "target/code.js",
 				options: {
 					fast: "never",
+				},
+			},
+		},
+		tsd: {
+			reinstall: {
+				options: {
+					command: 'reinstall',
+					config: 'tsd.json',
 				},
 			},
 		},
