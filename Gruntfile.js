@@ -96,6 +96,8 @@ module.exports = function (grunt) {
 					warnings: true,
 				},
 				screwIE8: true,
+				sourceMap: true,
+				sourceMapIn: [ "target/code.js.map" ],
 				banner: "/* \u00A9 <%= uglify.options.now.getFullYear() %> example.com */",
 			},
 		},
