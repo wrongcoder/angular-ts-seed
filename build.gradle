@@ -1,3 +1,6 @@
+// Facilitates importing this project into IntelliJ IDEA
+// Use grunt to actually build this project
+
 apply plugin: 'idea'
 
 idea {
