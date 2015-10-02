@@ -8,6 +8,7 @@
 /target
 /.tscache
 /tscommand-*.tmp.txt
+/typings
 /app/.baseDir.ts
 /app/**/*.js
 /app/**/*.js.map

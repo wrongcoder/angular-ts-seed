@@ -1,4 +1,4 @@
-///<reference path="../target/typings/tsd.d.ts"/>
+///<reference path="../typings/tsd.d.ts"/>
 
 import * as GlobalState from './GlobalState';
 import HelloWorldController from './helloWorld/HelloWorldController';
