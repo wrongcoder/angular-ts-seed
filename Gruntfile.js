@@ -11,37 +11,36 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-targethtml");
 	grunt.loadNpmTasks("grunt-ts");
 	grunt.loadNpmTasks("grunt-tsd");
+	grunt.loadNpmTasks("grunt-webpack");
 
-	grunt.registerTask("dev", [ "connect:dev", "tsd", "ts:dev" ]);
-	grunt.registerTask("dist", [ "clean", "tsd", "ts:prod", "ngtemplates", "uglify:prod", "less:prod", "targethtml:prod", "lineremover:prod", "copy:dist" ]);
+	grunt.registerTask("dev", [ "connect:dev", "clean", "tsd", "ts:dev" ]);
+	grunt.registerTask("dist", [ "clean", "tsd", "ts:prod", "webpack:prod", "ngtemplates", "uglify:prod", "less:prod", "targethtml:prod", "lineremover:prod", "copy:dist" ]);
 	grunt.registerTask("test", [ "dist", "connect:dist:keepalive" ]);
 	grunt.registerTask("default", [ "dev" ]);
 
 	grunt.initConfig({
 		ts: {
 			options: {
+				module: "amd",
 				removeComments: false,
-				htmlModuleTemplate: "<%= filename %>",
-				htmlVarTemplate: "<%= ext %>",
 			},
 			dev: {
 				baseDir: "app",
-				src: [ "app/src/**/*.ts" ],
-				reference: "app/reference.ts",
-				amdloader: "target/loader.js",
-				outDir: "target",
-				watch: "app/src",
+				src: [ "app/**.ts" ],
+				outDir: "target/app",
+				watch: "app",
 				options: {
-					sourceRoot: ".",
+					fast: "watch",
+					inlineSourceMap: true,
 				},
 			},
 			prod: {
-				baseDir: "app/src",
-				src: [ "app/src/**/*.ts" ],
-				reference: "app/reference.ts",
-				out: "target/code.js",
+				baseDir: "app",
+				src: [ "app/**.ts" ],
+				outDir: "target/app",
 				options: {
 					fast: "never",
+					inlineSourceMap: true,
 				},
 			},
 		},
@@ -53,10 +52,26 @@ module.exports = function (grunt) {
 				},
 			},
 		},
+		webpack: {
+			prod: {
+				devtool: "source-map",
+				entry: "./target/app/Application",
+				output: {
+					path: "target",
+					filename: "bundle.js",
+					sourceMapFilename: "bundle.js.map",
+				},
+				module: {
+					preLoaders: [
+						{ test: /\.js$/, loader: "source-map" },
+					],
+				},
+			},
+		},
 		ngtemplates: {
 			prod: {
 				cwd: "app",
-				src: [ "view/**.html" ],
+				src: [ "**/*.html", "!index.html" ],
 				dest: "target/views.js",
 				options: {
 					module: "APP",
@@ -75,7 +90,7 @@ module.exports = function (grunt) {
 		},
 		uglify: {
 			prod: {
-				src: [ "target/code.js", "target/views.js" ],
+				src: [ "target/bundle.js", "target/views.js" ],
 				dest: "target/application.js",
 			},
 			options: {
@@ -106,7 +121,7 @@ module.exports = function (grunt) {
 				},
 				screwIE8: true,
 				sourceMap: true,
-				sourceMapIn: [ "target/code.js.map" ],
+				sourceMapIn: [ "target/bundle.js.map" ],
 				banner: "/* \u00A9 <%= uglify.options.now.getFullYear() %> example.com */",
 			},
 		},
@@ -141,7 +156,7 @@ module.exports = function (grunt) {
 			dist: {
 				files: [
 					{ expand: true, dest: "target/dist/", cwd: "target", src: [ "index.html", "style.css", "application.js" ] },
-					{ expand: true, dest: "target/dist/", cwd: "app", src: [ "static/**" ] },
+					{ expand: true, dest: "target/dist/", cwd: "app", src: [ "**", "!**/*.html", "!**/*.ts", "!style.less" ] },
 				],
 			},
 		},
@@ -153,7 +168,7 @@ module.exports = function (grunt) {
 			},
 			dev: {
 				options: {
-					base: [ "app", "target", "target/src" ],
+					base: [ "target", "app" ],
 				},
 			},
 			dist: {

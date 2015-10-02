@@ -10,7 +10,7 @@
 	<!--(if target dev)><!-->
 	<link rel="stylesheet/less" href="style.less" />
 	<script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.0/less.min.js"></script>
-	<script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js" data-main="loader.js"></script>
+	<script defer="defer" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js" data-main="app/Application.js"></script>
 	<!--<!(endif)-->
 	<!--(if target prod)>
 	<script defer="defer" src="application.js"></script>
@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div data-ng-controller="RootCtrl as root" data-ng-cloak="cloak">
-		<div data-ng-include="'view/' + root.view + '.html'">
+		<div data-ng-include="root.view + '.html'">
 			JavaScript must be enabled to use this application.
 		</div>
 		<!--(if target dev)><!-->

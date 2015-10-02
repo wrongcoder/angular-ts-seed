@@ -10,6 +10,8 @@
     "grunt-line-remover": "0.0.2",
     "grunt-targethtml": "0.2.6",
     "grunt-ts": "4.2.0",
-    "grunt-tsd": "0.1.0"
+    "grunt-tsd": "0.1.0",
+    "grunt-webpack": "1.0.11",
+    "source-map-loader": "0.1.5"
   }
 }
