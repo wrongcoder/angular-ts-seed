@@ -1,4 +1,4 @@
-///<reference path="../typings/tsd.d.ts"/>
+///<reference path=".types.d.ts"/>
 
 export { GlobalState as default }
 

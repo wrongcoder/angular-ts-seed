@@ -1,4 +1,4 @@
-///<reference path="../typings/tsd.d.ts"/>
+///<reference path=".types.d.ts"/>
 
 export default class RootController {
 	private $templateCache: ng.ITemplateCacheService;
